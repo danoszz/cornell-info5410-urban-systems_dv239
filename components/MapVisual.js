@@ -30,11 +30,6 @@ class MapVisual extends Component {
   }
 
   drawBasicMap() {
-    // The svg
-    // var svg = d3.select("svg"),
-    //   width = +svg.attr("width"),
-    //   height = +svg.attr("height")
-
     const width = 800
     const height = 750
 
@@ -43,22 +38,18 @@ class MapVisual extends Component {
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-    // .append("circle")
-    // .attr("cx", width / 2)
-    // .attr("cy", height / 2)
-    // .attr("r", height / 4)
-
-    // Load map data
 
     let mapSize = 0
 
-    // Load map of NYC geojson and generate path
-    d3.json(
-      "https://raw.githubusercontent.com/danoszz/cornell-info5410-urban-systems_dv239/main/public/data/nyc.geojson"
-    ).then(function (data) {
-      console.log("map", data)
-      mapSize = data
+    // let projection = d3
+    //   .geoConicConformal()
+    //   .parallels([33, 45])
+    //   .rotate([96, -39])
+    //   .fitSize([width, height], d)
 
+    // let geoGenerator = d3.geoPath().projection(projection).context(svgMap)
+
+    const mapGenerator = (w, h, d) => {
       const mapGenerator = d3
         .geoPath()
         .projection(
@@ -66,59 +57,89 @@ class MapVisual extends Component {
             .geoConicConformal()
             .parallels([33, 45])
             .rotate([96, -39])
-            .fitSize([width, height], mapSize)
+            .fitSize([w, h], d)
         )
 
-      svgMap
-        .append("g")
-        .selectAll("path")
-        .data(data.features)
-        .enter()
-        .append("path")
-        .attr("fill", "#242424")
-        .attr("d", mapGenerator)
-        .style("stroke", "#fff")
-        .style("stroke-width", 0.5)
-        .attr("id", "nycPath")
+      return mapGenerator
+    }
 
-      return mapSize
-    })
-
-    // const point_geojson = {
-    //   type: "Feature",
-    //   geometry: {
-    //     type: "Point",
-    //     coordinates: [-97.321426, 38.128271]
-    //   },
-    //   properties: {
-    //     details: "single point"
-    //   }
-    // }
+    // const mapGenerator = d3
+    //   .geoPath()
+    //   .projection(
+    //     d3
+    //       .geoConicConformal()
+    //       .parallels([33, 45])
+    //       .rotate([96, -39])
+    //       .fitSize([width, height], nycMapData)
+    //   )
 
     // svgMap
-    //   .selectAll(".point")
-    //   .data([point_geojson])
+    //   .append("g")
+    //   .selectAll("path")
+    //   .data(nycMapData.features)
     //   .enter()
     //   .append("path")
-    //   .style("stroke", "#0000ed")
-    //   .style("stroke-width", 0.1)
+    //   .attr("fill", "#242424")
+    //   .attr("d", mapGenerator)
+    //   .style("stroke", "#fff")
+    //   .style("stroke-width", 0.5)
+    //   .attr("id", "nycPath")
 
-    // Get data and fire action
+    // Load map of NYC geojson and generate path
+    d3.json(
+      "https://raw.githubusercontent.com/danoszz/cornell-info5410-urban-systems_dv239/main/public/data/nyc.geojson"
+    )
+      .then(function (data) {
+        svgMap
+          .append("g")
+          .selectAll("path")
+          .data(data.features)
+          .enter()
+          .append("path")
+          .attr("fill", "#242424")
+          .attr("d", mapGenerator(width, height, data))
+          .style("stroke", "#fff")
+          .style("stroke-width", 0.5)
+          .attr("id", "nycPath")
+
+        //console.log(point, d3.geoContains(feature, testPoint))
+        var circle1 = d3.geoCircle().center([-73.957397, 40.752892]).radius(2)
+
+        // context.beginPath()
+        // context.strokeStyle = "red"
+        // geoGenerator(circle())
+        // context.stroke()
+
+        // svgMap.beginPath()
+        // svgMap.strokeStyle = "red"
+        // mapGenerator(circle())
+        // svgMap.stroke()
+
+        // svgMap
+        //   .append("g")
+        //   .style("stroke", "#fff")
+        //   .attr("fill", "#0000ed")
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+
+    // Get data from
     d3.json("https://data.cityofnewyork.us/resource/s4kf-3yrf.json").then(
       function (data) {
         console.log("link", data)
 
         // let generator = d3.geoPath().projection(projection);
 
-        const generator = d3
-          .geoPath()
-          .projection(
-            d3
-              .geoConicConformal()
-              .parallels([33, 45])
-              .rotate([96, -39])
-              .fitSize([width, height], mapSize)
-          )
+        // const generator = d3
+        //   .geoPath()
+        //   .projection(
+        //     d3
+        //       .geoConicConformal()
+        //       .parallels([33, 45])
+        //       .rotate([96, -39])
+        //       .fitSize([width, height], mapSize)
+        //   )
 
         for (let index = 0; index < data.length; index++) {
           const point = data[index]
@@ -134,6 +155,17 @@ class MapVisual extends Component {
           //   pointCoordinates.splice(y, 1, A[x])[0])
 
           const testPoint = ["40.77426628", "-73.98094971"]
+
+          svgMap
+            .append("circle")
+            .attr("cx", 1 + index * 10)
+            .attr("cy", 1 + index * 10)
+            .attr("r", 1 + index)
+            .attr("fill-opacity", "0.1")
+            .style("fill", "#40FF00")
+            .attr("stroke", "#40FF00")
+            .style("stroke-width", 1)
+            .attr("class", "nycLinkPoint")
 
           // let pointCoordinatesSwapped = swapLongLat(pointCoordinates)
 
@@ -155,21 +187,6 @@ class MapVisual extends Component {
           .geoCircle()
           .center([40.77426628, -73.98094971])
           .radius(20)
-
-        //console.log(point, d3.geoContains(feature, testPoint))
-        var circle1 = d3.geoCircle().center([-73.957397, 40.752892]).radius(5)
-
-        // context.beginPath()
-        // context.strokeStyle = "red"
-        // geoGenerator(circle())
-        // context.stroke()
-
-        svgMap
-          .append("g")
-          .attr("fill", "#0000ed")
-          .attr("d", circle1)
-          .style("stroke", "#fff")
-          .attr("class", "nycLinkPoint")
       }
     )
   }
