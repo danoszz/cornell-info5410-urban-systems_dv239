@@ -36,9 +36,9 @@ class MapVisual extends Component {
     //   height = +svg.attr("height")
 
     const width = 800
-    const height = 400
+    const height = 750
 
-    const svg = d3
+    const svgMap = d3
       .select(".dataviz")
       .append("svg")
       .attr("width", width)
@@ -48,28 +48,130 @@ class MapVisual extends Component {
     // .attr("cy", height / 2)
     // .attr("r", height / 4)
 
-    // Map and projection
-    const projection = d3
-      .geoNaturalEarth1()
-      .scale(width / 1.3 / Math.PI)
-      .translate([width / 2, height / 2])
+    // Load map data
 
+    let mapSize = 0
+
+    // Load map of NYC geojson and generate path
     d3.json(
-      "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"
+      "https://raw.githubusercontent.com/danoszz/cornell-info5410-urban-systems_dv239/main/public/data/nyc.geojson"
     ).then(function (data) {
-      console.log(data)
+      console.log("map", data)
+      mapSize = data
 
-      svg
+      const mapGenerator = d3
+        .geoPath()
+        .projection(
+          d3
+            .geoConicConformal()
+            .parallels([33, 45])
+            .rotate([96, -39])
+            .fitSize([width, height], mapSize)
+        )
+
+      svgMap
         .append("g")
         .selectAll("path")
         .data(data.features)
         .enter()
         .append("path")
-        .attr("fill", "#f9f9f9")
-        .attr("d", d3.geoPath().projection(projection))
-        .style("stroke", "#000")
+        .attr("fill", "#242424")
+        .attr("d", mapGenerator)
+        .style("stroke", "#fff")
+        .style("stroke-width", 0.5)
+        .attr("id", "nycPath")
+
+      return mapSize
     })
-    // Load external data and boot
+
+    // const point_geojson = {
+    //   type: "Feature",
+    //   geometry: {
+    //     type: "Point",
+    //     coordinates: [-97.321426, 38.128271]
+    //   },
+    //   properties: {
+    //     details: "single point"
+    //   }
+    // }
+
+    // svgMap
+    //   .selectAll(".point")
+    //   .data([point_geojson])
+    //   .enter()
+    //   .append("path")
+    //   .style("stroke", "#0000ed")
+    //   .style("stroke-width", 0.1)
+
+    // Get data and fire action
+    d3.json("https://data.cityofnewyork.us/resource/s4kf-3yrf.json").then(
+      function (data) {
+        console.log("link", data)
+
+        // let generator = d3.geoPath().projection(projection);
+
+        const generator = d3
+          .geoPath()
+          .projection(
+            d3
+              .geoConicConformal()
+              .parallels([33, 45])
+              .rotate([96, -39])
+              .fitSize([width, height], mapSize)
+          )
+
+        for (let index = 0; index < data.length; index++) {
+          const point = data[index]
+          const pointLocation = data[index]["location"]
+          let pointCoordinates = Object.values(pointLocation) // convert Object to Array
+
+          // Preprocessing: swap location longitude and latitude for d3.geoCircle() and to float
+          let floatCoordinates = [
+            parseFloat(pointCoordinates[1]),
+            parseFloat(pointCoordinates[0])
+          ]
+          // let swappedCoordinates = (pointCoordinates[x] =
+          //   pointCoordinates.splice(y, 1, A[x])[0])
+
+          const testPoint = ["40.77426628", "-73.98094971"]
+
+          // let pointCoordinatesSwapped = swapLongLat(pointCoordinates)
+
+          //  console.log(pointCoordinates, floatCoordinates)
+
+          //  let circle = d3.geoCircle().center(floatCoordinates).radius(20)
+
+          //console.log(point, d3.geoContains(feature, testPoint))
+
+          // svgMap
+          //   .append("g")
+          //   .attr("fill", "#0000ed")
+          //   .attr("d", circle)
+          //   .style("stroke", "#fff")
+          //   .attr("class", "nycLinkPoint")
+        }
+
+        let circle = d3
+          .geoCircle()
+          .center([40.77426628, -73.98094971])
+          .radius(20)
+
+        //console.log(point, d3.geoContains(feature, testPoint))
+        var circle1 = d3.geoCircle().center([-73.957397, 40.752892]).radius(5)
+
+        // context.beginPath()
+        // context.strokeStyle = "red"
+        // geoGenerator(circle())
+        // context.stroke()
+
+        svgMap
+          .append("g")
+          .attr("fill", "#0000ed")
+          .attr("d", circle1)
+          .style("stroke", "#fff")
+          .attr("class", "nycLinkPoint")
+      }
+    )
   }
 
   render() {

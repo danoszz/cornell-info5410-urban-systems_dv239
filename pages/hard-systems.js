@@ -16,12 +16,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">Urban Data Visualizations</h1>
+        <h1 className="title">NYC Link Kiosk</h1>
 
-        <p className="description">
-          Visual overview of the interactive maps made for{" "}
-          <b>INFO 5410 Urban Systems</b> at Cornell Tech, 2021{" "}
-        </p>
+        <p className="description">Hard Systems - Urban Data Visualizations</p>
 
         <div className="dataviz">
           {/* <DemoChart
@@ -45,6 +42,10 @@ export default function Home() {
       </footer>
 
       <style jsx>{`
+        .nycLinkPoint {
+          height: 20px;
+          width: 20px;
+        }
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -55,7 +56,7 @@ export default function Home() {
         }
         .dataviz {
           position: relative;
-          background: #f9f9f9;
+          // background: #f9f9f9;
         }
         .dataviz svg {
           position: absolute;
@@ -191,6 +192,8 @@ export default function Home() {
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+          background-color: #000000;
+          color: white;
         }
 
         * {
