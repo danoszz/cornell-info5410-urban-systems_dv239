@@ -38,21 +38,23 @@ h3 {
 }
 
 p,
-a {
+p a,
+a,
+ul li,
+ol li {
   font-size: var(--typoMedium);
   line-height: 1.8;
   font-weight: 300;
 }
 
-// footer img {
-//   margin-left: 0.5rem;
-// }
-
-// footer a {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+ul,
+ol {
+  padding-left: calc(var(--typoMedium) * 1.5);
+  li {
+    padding-left: var(--typoMedium);
+    margin-bottom: calc(var(--typoMedium) / 2);
+  }
+}
 
 a {
   color: inherit;

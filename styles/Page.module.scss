@@ -50,95 +50,56 @@
   padding: calc(var(--magicNumber) / 3);
 
   h3,
-  p {
+  p,
+  .contentBlock {
     grid-column: 2;
   }
-  p:first-of-type {
-    font-size: 150%;
-    font-weight: 400;
+  p a {
+    // text-decoration: underline;
+    color: var(--green);
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  p:nth-child(1),
+  p:nth-child(1) a {
+    font-size: 26px;
+    font-weight: 500;
     line-height: 1.6;
   }
 }
-// .dataviz {
-//   position: relative;
-//   // background: #f9f9f9;
-// }
-// .dataviz svg {
-//   position: absolute;
-//   right: 0;
-// }
+.articleClosing {
+  grid-column: 2;
+  ul {
+    margin: calc(var(--magicNumber) * 2) 0;
+    padding: 0;
+  }
+  li {
+    font-size: var(--typoSmall);
+    margin: 0;
+    padding: calc(var(--magicNumber) / 12) 0;
+    list-style: none;
+    border-top: 1px solid white;
 
-// .title a {
-//   color: #0070f3;
-//   text-decoration: none;
-// }
+    &:last-child {
+      border-bottom: 1px solid white;
+    }
+    a {
+      font-size: var(--typoSmall);
+    }
+  }
+}
+.contentBlock {
+  margin-top: calc(var(--magicNumber) / 2);
 
-// .title a:hover,
-// .title a:focus,
-// .title a:active {
-//   text-decoration: underline;
-// }
-
-// .title {
-//   margin: 0;
-//   line-height: 1.15;
-//   font-size: 4rem;
-//   text-align: left;
-// }
-
-// .title,
-// .description {
-//   // text-align: center;
-// }
-
-// .description {
-//   line-height: 1.5;
-//   font-size: 1.5rem;
-// }
-
-// .grid {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-wrap: wrap;
-
-//   max-width: 800px;
-//   margin-top: 3rem;
-// }
-
-// .card {
-//   margin: 1rem;
-//   flex-basis: 45%;
-//   padding: 1.5rem;
-//   text-align: left;
-//   color: inherit;
-//   text-decoration: none;
-//   border: 1px solid #eaeaea;
-//   border-radius: 10px;
-//   transition: color 0.15s ease, border-color 0.15s ease;
-// }
-
-// .card:hover,
-// .card:focus,
-// .card:active {
-//   color: #0070f3;
-//   border-color: #0070f3;
-// }
-
-// .card h3 {
-//   margin: 0 0 1rem 0;
-//   font-size: 1.5rem;
-// }
-
-// .card p {
-//   margin: 0;
-//   font-size: 1.25rem;
-//   line-height: 1.5;
-// }
-
-// .logo {
-//   height: 1em;
-// }
+  figcaption,
+  figcaption a {
+    font-size: var(--typoSmall);
+    opacity: 0.5;
+    margin-top: calc(var(--magicNumber) / 4);
+  }
+}
 
 @media (max-width: 600px) {
   .grid {
