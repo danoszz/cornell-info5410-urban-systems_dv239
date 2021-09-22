@@ -14,19 +14,8 @@ class MapVisual extends Component {
     // console.log("nycTopo", nycTopo)
     // this.loadData()
     this.drawBasicMap()
-
+    // this.drawExampleMap()
     // this.drawChart()
-  }
-
-  loadData() {
-    // const nycOpenData = d3.json(nycOpenDataLookup[datasets])
-    // const nycTopo = d3.json("./nyc.json")
-    // console.log(nyc)
-    // drawBasicMap()
-    // nyc.map()
-    // d3.json(nyc, function (data) {
-    //   console.log(data)
-    // })
   }
 
   drawBasicMap() {
@@ -38,6 +27,8 @@ class MapVisual extends Component {
       .append("svg")
       .attr("width", width)
       .attr("height", height)
+
+    // var context = d3.select("#content canvas").node()
 
     let mapSize = 0
 
@@ -62,6 +53,16 @@ class MapVisual extends Component {
 
       return mapGenerator
     }
+
+    var projection = d3
+      .geoConicConformal()
+      .parallels([33, 45])
+      .rotate([96, -39])
+      .fitSize([width, height])
+
+    var geoGenerator = d3.geoPath().projection(projection).context(context)
+
+    const svgPoint = [-73.97604935591414, 40.631275905646646]
 
     // const mapGenerator = d3
     //   .geoPath()
@@ -104,6 +105,13 @@ class MapVisual extends Component {
 
         //console.log(point, d3.geoContains(feature, testPoint))
         var circle1 = d3.geoCircle().center([-73.957397, 40.752892]).radius(2)
+
+        var circle = d3.geoCircle().center(svgPoint).radius(5)
+
+        svgMap.beginPath()
+        svgMap.strokeStyle = "red"
+        geoGenerator(circle())
+        svgMap.stroke()
 
         // context.beginPath()
         // context.strokeStyle = "red"
@@ -156,16 +164,16 @@ class MapVisual extends Component {
 
           const testPoint = ["40.77426628", "-73.98094971"]
 
-          svgMap
-            .append("circle")
-            .attr("cx", 1 + index * 10)
-            .attr("cy", 1 + index * 10)
-            .attr("r", 1 + index)
-            .attr("fill-opacity", "0.1")
-            .style("fill", "#40FF00")
-            .attr("stroke", "#40FF00")
-            .style("stroke-width", 1)
-            .attr("class", "nycLinkPoint")
+          // svgMap
+          //   .append("circle")
+          //   .attr("cx", 1 + index * 10)
+          //   .attr("cy", 1 + index * 10)
+          //   .attr("r", 1 + index)
+          //   .attr("fill-opacity", "0.1")
+          //   .style("fill", "#40FF00")
+          //   .attr("stroke", "#40FF00")
+          //   .style("stroke-width", 1)
+          //   .attr("class", "nycLinkPoint")
 
           // let pointCoordinatesSwapped = swapLongLat(pointCoordinates)
 
@@ -183,16 +191,15 @@ class MapVisual extends Component {
           //   .attr("class", "nycLinkPoint")
         }
 
-        let circle = d3
-          .geoCircle()
-          .center([40.77426628, -73.98094971])
-          .radius(20)
+        let circle = d3.geoCircle().center(svgPoint).radius(20)
       }
     )
   }
 
   render() {
-    return <div id={"#" + this.props.id}></div>
+    return (
+      <div id="content">{/* <canvas width="800" height="400"></canvas> */}</div>
+    )
   }
 }
 
