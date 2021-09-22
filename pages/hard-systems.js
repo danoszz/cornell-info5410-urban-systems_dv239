@@ -21,7 +21,7 @@ export default function HardSystems() {
           <iframe
             id={styles.keplerDataviz}
             title="Inline Hard Systems Map"
-            // src="./kepler2.html"
+            src="./kepler2.html"
           />
         </div>
 
