@@ -11,13 +11,22 @@ const Footer = () => {
       >
         Daan van der Zwaag, INFO 5410 Urban Systems, Cornell Tech, NYC
       </a>
-      <a
-        href="https://daanvanderzwaag.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        See project on Github <span>↗</span>
-      </a>
+      <div>
+        <a
+          href="https://daanvanderzwaag.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View video on Youtube<span>↗</span>
+        </a>
+        <a
+          href="https://daanvanderzwaag.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View code on Github <span>↗</span>
+        </a>
+      </div>
     </footer>
   )
 }

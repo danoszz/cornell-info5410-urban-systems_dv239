@@ -4,6 +4,8 @@
   padding: calc(var(--magicNumber) / 2);
   border-top: 1px solid #494949;
 
+  @include grid();
+
   a {
     font-size: var(--typoSmall);
   }
@@ -18,5 +20,8 @@
   a span {
     margin-left: 4px;
   }
-  @include grid();
+
+  div {
+    @include grid();
+  }
 }
