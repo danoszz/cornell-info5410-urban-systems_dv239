@@ -1,205 +1,90 @@
 import Head from "next/head"
-import MapVisual from "../components/MapVisual"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
 
-import BarChartData from "../components/BarChartData"
-import DemoChart from "../components/DemoChart"
-import Circles from "../components/Circles"
-import { generateDataset } from "../components/helpers"
-//import * as d3 from "d3"
+import styles from "../styles/Page.module.scss"
 
-export default function Home() {
+export default function HardSystems() {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Head>
         <title>Hard Systems</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Header
+        title="Urban Systems"
+        subtitle="Data Visualisations"
+        meta="A1 - 092121 - DV239"
+      />
       <main>
-        <h1 className="title">NYC Link Kiosk</h1>
-
-        <p className="description">Hard Systems - Urban Data Visualizations</p>
-
         <div className="dataviz">
-          {/* <DemoChart
-            width={800}
-            height={400}
-            data={[2, 4, 6, 8, 10, 12, 10, 8, 6, 4, 2]}
-          /> */}
-          <MapVisual />
-          {/* <Circles /> */}
+          <iframe
+            id={styles.keplerDataviz}
+            title="Inline Hard Systems Map"
+            // src="./kepler2.html"
+          />
         </div>
+
+        <section className={styles.content}>
+          <header className={styles.articleHeader}>
+            <h1 className={styles.title}>NYC Link Kiosks</h1>
+            <p className={styles.description}>Hard Systems</p>
+          </header>
+          <article className={styles.articleBody}>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+              malesuada, libero eu maximus luctus, justo ligula suscipit justo,
+              mattis pellentesque quam eros a leo. Pellentesque at varius nisi.
+              Etiam imperdiet, nulla vel accumsan vulputate, lectus enim feugiat
+              erat.
+            </p>
+            <h3>Process</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+              malesuada, libero eu maximus luctus, justo ligula suscipit justo,
+              mattis pellentesque quam eros a leo. Pellentesque at varius nisi.
+              Etiam imperdiet, nulla vel accumsan vulputate, lectus enim feugiat
+              erat, in auctor quam dui sed eros. Quisque molestie laoreet nibh,
+              eget scelerisque ante bibendum nec. Integer vel felis vulputate,
+              faucibus nibh non, lobortis neque. Duis sit amet massa suscipit,
+              cursus nulla id, rutrum tellus. Donec rhoncus enim sem, sed semper
+              enim semper tempor. Pellentesque et accumsan elit. Nullam vel
+              magna non velit commodo posuere ac in diam. Donec eu blandit nunc.
+            </p>
+            <h3>Features</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+              malesuada, libero eu maximus luctus, justo ligula suscipit justo,
+              mattis pellentesque quam eros a leo. Pellentesque at varius nisi.
+              Etiam imperdiet, nulla vel accumsan vulputate, lectus enim feugiat
+              erat, in auctor quam dui sed eros. Quisque molestie laoreet nibh,
+              eget scelerisque ante bibendum nec. Integer vel felis vulputate,
+              faucibus nibh non, lobortis neque. Duis sit amet massa suscipit,
+              cursus nulla id, rutrum tellus. Donec rhoncus enim sem, sed semper
+              enim semper tempor. Pellentesque et accumsan elit. Nullam vel
+              magna non velit commodo posuere ac in diam. Donec eu blandit nunc.
+            </p>
+            <h3>Enhancements</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+              malesuada, libero eu maximus luctus, justo ligula suscipit justo,
+              mattis pellentesque quam eros a leo. Pellentesque at varius nisi.
+              Etiam imperdiet, nulla vel accumsan vulputate, lectus enim feugiat
+              erat, in auctor quam dui sed eros.
+            </p>
+            <h3>Conclusion</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+              malesuada, libero eu maximus luctus, justo ligula suscipit justo,
+              mattis pellentesque quam eros a leo. Pellentesque at varius nisi.
+              Etiam imperdiet, nulla vel accumsan vulputate, lectus enim feugiat
+              erat, in auctor quam dui sed eros.
+            </p>
+          </article>
+        </section>
       </main>
 
-      <footer>
-        <a
-          href="https://daanvanderzwaag.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Project by Daan van der Zwaag
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .nycLinkPoint {
-          height: 20px;
-          width: 20px;
-        }
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        .dataviz {
-          position: relative;
-          // background: #f9f9f9;
-        }
-        .dataviz svg {
-          position: absolute;
-          right: 0;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-          background-color: #000000;
-          color: white;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
+      <Footer />
     </div>
   )
 }

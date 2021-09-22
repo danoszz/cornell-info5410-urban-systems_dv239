@@ -20,7 +20,15 @@ export default function Home() {
 
         <p className="description">Hard Systems - Urban Data Visualizations</p>
 
-        <div className="dataviz"></div>
+        <div className="dataviz">
+          {/* <DemoChart
+            width={800}
+            height={400}
+            data={[2, 4, 6, 8, 10, 12, 10, 8, 6, 4, 2]}
+          /> */}
+          <MapVisual />
+          {/* <Circles /> */}
+        </div>
       </main>
 
       <footer>
