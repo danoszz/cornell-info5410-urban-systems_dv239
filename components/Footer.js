@@ -9,18 +9,14 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Daan van der Zwaag, INFO 5410 Urban Systems, Cornell Tech, NYC
+        Project by Daan van der Zwaag, 2021
       </a>
       <div>
-        <a
-          href="https://daanvanderzwaag.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="#m" target="_blank" rel="noopener noreferrer">
           View video on Youtube<span>↗</span>
         </a>
         <a
-          href="https://daanvanderzwaag.com"
+          href="https://github.com/danoszz/cornell-info5410-urban-systems_dv239"
           target="_blank"
           rel="noopener noreferrer"
         >
