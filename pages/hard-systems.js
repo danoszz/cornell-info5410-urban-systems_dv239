@@ -176,13 +176,10 @@ export default function HardSystems() {
                 methods and styles.
               </figcaption>
             </div>
-            <h3>Conclusion</h3>
+            <h3>Features</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              malesuada, libero eu maximus luctus, justo ligula suscipit justo,
-              mattis pellentesque quam eros a leo. Pellentesque at varius nisi.
-              Etiam imperdiet, nulla vel accumsan vulputate, lectus enim feugiat
-              erat, in auctor quam dui sed eros.
+              The final data visualization is a production-ready web application
+              that embeds an interactive map.
             </p>
             <div className={styles.contentBlock}>
               <ul>
