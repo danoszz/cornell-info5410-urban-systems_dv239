@@ -1,4 +1,6 @@
 import Head from "next/head"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
 
 export default function Home() {
   return (
@@ -7,7 +9,11 @@ export default function Home() {
         <title>Urban Data Visualizations</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Header
+        title="Urban Systems"
+        subtitle="Data Visualisations"
+        meta="DV239"
+      />
       <main>
         <h1 className="title">Urban Data Visualizations</h1>
 
@@ -22,22 +28,14 @@ export default function Home() {
             <p>The Flipside of Public Wifi in NYC. Interactive 3D map</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className="card">
+          <a href="#" className="card">
             <h3>Soft Systems &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+            <p>Project is currently is under construction</p>
           </a>
         </div>
       </main>
 
-      <footer>
-        <a
-          href="https://daanvanderzwaag.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Project by Daan van der Zwaag
-        </a>
-      </footer>
+      <Footer />
 
       <style jsx>{`
         .container {
@@ -136,15 +134,15 @@ export default function Home() {
           color: inherit;
           text-decoration: none;
           border: 1px solid #eaeaea;
-          border-radius: 10px;
+          border-radius: 0;
           transition: color 0.15s ease, border-color 0.15s ease;
         }
 
         .card:hover,
         .card:focus,
         .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
+          color: #40ff00;
+          border-color: #40ff00;
         }
 
         .card h3 {

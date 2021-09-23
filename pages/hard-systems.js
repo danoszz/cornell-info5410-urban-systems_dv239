@@ -260,7 +260,7 @@ export default function HardSystems() {
         </section>
       </main>
 
-      <Footer />
+      <Footer showlinks />
     </div>
   )
 }
