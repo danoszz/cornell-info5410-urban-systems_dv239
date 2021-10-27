@@ -28,9 +28,9 @@ export default function Home() {
             <p>The Flipside of Public Wifi in NYC. Interactive 3D map</p>
           </a>
 
-          <a href="#" className="card">
+          <a href="/soft-systems" className="card">
             <h3>Soft Systems &rarr;</h3>
-            <p>Project is currently is under construction</p>
+            <p>Mapping Mapping Affordability in NYC</p>
           </a>
         </div>
       </main>

@@ -3,6 +3,7 @@
   --green: #40ff00;
   --typoSmall: 14px;
   --typoMedium: 20px;
+  --goldenRatio: 1.618;
 }
 
 html,
@@ -34,6 +35,7 @@ main {
 h3 {
   font-size: calc(var(--typoMedium) * 1.5);
   margin-bottom: calc(var(--typoMedium) / 4);
+  letter-spacing: -1px;
   font-weight: 300;
 }
 
@@ -46,7 +48,9 @@ ol li {
   line-height: 1.8;
   font-weight: 300;
 }
-
+quote {
+  font-style: italic;
+}
 ul,
 ol {
   padding-left: calc(var(--typoMedium) * 1.5);

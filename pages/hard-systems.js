@@ -22,7 +22,7 @@ export default function HardSystems() {
       <main>
         <div className="dataviz">
           <iframe
-            id={styles.keplerDataviz}
+            id={styles.datavizFrame}
             title="Inline Hard Systems Map"
             src="./kepler2.html"
           />
@@ -260,7 +260,10 @@ export default function HardSystems() {
         </section>
       </main>
 
-      <Footer showlinks />
+      <Footer
+        showlinks
+        loomLink="https://www.loom.com/share/a1711a6461d34537ac8b4cc08175edb5"
+      />
     </div>
   )
 }

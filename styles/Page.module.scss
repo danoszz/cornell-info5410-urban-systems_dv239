@@ -1,6 +1,6 @@
 @import "./mixins.scss";
 
-#keplerDataviz {
+#datavizFrame {
   width: calc(100vw - var(--magicNumber));
   height: calc(100vh - var(--magicNumber) * 3);
 
@@ -8,14 +8,16 @@
   margin-left: calc(var(--magicNumber) / 2);
   border: none;
   background-color: #242424;
+
+  &:focus {
+    outline: var(--green);
+  }
 }
 
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
 }
 
 .content {
@@ -27,10 +29,7 @@
   font-size: 6vw;
   margin: 0;
   font-weight: 500;
-
-  // span {
-
-  // }
+  letter-spacing: -0.06vw;
 }
 
 .description {
@@ -47,12 +46,13 @@
 
 .articleBody {
   @include grid();
-  padding: calc(var(--magicNumber) / 3);
+  padding: calc(var(--magicNumber) / 2);
 
   h3,
   p,
   .contentBlock {
     grid-column: 2;
+    padding-right: var(--magicNumber);
   }
   p a {
     // text-decoration: underline;
@@ -62,13 +62,22 @@
       opacity: 0.5;
     }
   }
+
   p:nth-child(1),
   p:nth-child(1) a {
     font-size: 26px;
     font-weight: 500;
     line-height: 1.6;
   }
+  pre {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0 12px;
+    display: inline-block;
+    margin: 0;
+  }
 }
+
 .articleClosing {
   grid-column: 2;
   ul {
@@ -89,6 +98,19 @@
       font-size: var(--typoSmall);
     }
   }
+}
+
+.callout {
+  // background-color: var(--green);
+  // color: black;
+  border: 1px solid var(--green);
+  margin-right: calc(var(--magicNumber) / 2);
+  color: var(--green);
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 125%;
+  border-radius: 4px;
+  padding: calc(var(--magicNumber) / 2);
 }
 .contentBlock {
   margin-top: calc(var(--magicNumber) / 2);

@@ -4,11 +4,7 @@ import styles from "../styles/Header.module.scss"
 const Header = ({ title, subtitle, meta }) => {
   return (
     <footer className={styles.header}>
-      <a
-        href="https://daanvanderzwaag.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="/" target="_blank" rel="noopener noreferrer">
         {title}
       </a>
       <div>

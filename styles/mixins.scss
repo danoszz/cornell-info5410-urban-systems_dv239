@@ -1,4 +1,7 @@
 @mixin grid() {
+  $goldenRatio: 1.61803398875;
+  $rightCol: calc(100 / $goldenRatio) * 1%;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: var(--magicNumber);
