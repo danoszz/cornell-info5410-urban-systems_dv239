@@ -2,13 +2,8 @@ import Head from "next/head"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Image from "next/image"
-import Article from "./articles/articleTemplate"
-
-import articleTest from "./articles/article-test.mdx"
 
 import styles from "../styles/Page.module.scss"
-import articleImage from "../public/article-image_1.png"
-// import articleGif from "../public/article-design-process.gif"
 import imageNetworkGraph from "../public/a2-network-graph.png"
 import imageDataTable from "../public/a2-data-table.png"
 
